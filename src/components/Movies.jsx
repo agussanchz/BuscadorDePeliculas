@@ -5,10 +5,10 @@ function ListOfMovies ({ movies }){
         <ul className='results-ul'>
             {
                 movies.map((movie) => (
-                    <li key={movie.imdbID} className='results-li'>
-                        <h3>{movie.Title}</h3>
-                        <img src={movie.Poster} alt={movie.Title} />
-                        <p>{movie.Year}</p>
+                    <li key={movie.id} className='results-li'>
+                        <h3>{movie.title}</h3>
+                        <img src={movie.img} alt={movie.title} />
+                        <p>{movie.year}</p>
                     </li>
                 ))
             }

@@ -1,9 +1,10 @@
 import Movies from "./components/Movies"
-import responseMovies from './mocks/movies.json'
+import { useMovies } from "./hooks/useMovies"
+
 
 function App() {
 
-  const movies = responseMovies.Search
+  const { movies } = useMovies()
 
   return (
     <div className="app">
@@ -15,7 +16,7 @@ function App() {
         </form>
       </header>
       <main className="results">
-        <Movies movies={movies}/>
+        <Movies movies={movies} />
       </main>
     </div>
   )
