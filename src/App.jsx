@@ -8,11 +8,13 @@ import { useQuery } from "./hooks/useQuery"
 
 function App() {
 
-  const { movies } = useMovies()
+  
   const { query, setQuery, error } = useQuery()
+  const { movies, getMovies } = useMovies({ query })
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    getMovies()
   }
 
   const handleChange = (event) => {

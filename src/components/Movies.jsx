@@ -20,7 +20,7 @@ export default function Movies({ movies }) {
     const hasMovies = movies?.length > 0
     return (
         <>
-            { hasMovies ? <ListOfMovies movies={movies} /> : (<p>No existen peliculas</p>) }
+            { hasMovies ? <ListOfMovies movies={movies} /> : (<p>No se encontraron resultados para esta busqueda </p>) }
         </>
     )
 }
