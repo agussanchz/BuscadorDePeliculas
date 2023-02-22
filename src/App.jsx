@@ -1,20 +1,43 @@
+
 import Movies from "./components/Movies"
 import { useMovies } from "./hooks/useMovies"
+import { useQuery } from "./hooks/useQuery"
+
+
 
 
 function App() {
 
   const { movies } = useMovies()
+  const { query, setQuery, error } = useQuery()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  }
+
+  const handleChange = (event) => {
+    setQuery(event.target.value)
+  }
+
+
 
   return (
     <div className="app">
       <h1 className='title-aspelis'>Buscador de peliculas</h1>
       <header>
-        <form className="container-search">
-          <input type='search' placeholder='Avatar, Matrix, Maze Runner..' />
+        <form className="container-search" onSubmit={handleSubmit}>
+          <input 
+            name='input' 
+            type='search'
+            value={query} 
+            onChange={handleChange} 
+            placeholder='Avatar, Matrix, Maze Runner..' 
+            style={{ border: '1px solid transparent', borderColor: error ? 'red' : 'transparent'}}
+          />
           <button type='submit'>Buscar</button>
         </form>
       </header>
+      <p className="title-aspelis" style={{ color: 'red' }}>{error}</p>
       <main className="results">
         <Movies movies={movies} />
       </main>
