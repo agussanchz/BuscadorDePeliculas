@@ -1,13 +1,19 @@
-import { useState } from "react"
-import Movies from "./components/Movies"
+import { useCallback, useState } from "react"
 import { useMovies } from "./hooks/useMovies"
 import { useQuery } from "./hooks/useQuery"
-
+import Movies from "./components/Movies"
+import debounce from 'just-debounce-it'
 
 function App() {
   const [sort, setSort] = useState(false)
   const { query, setQuery, error } = useQuery()
   const { movies, getMovies, loading } = useMovies({ query, sort })
+
+  const debounceGetMovies = useCallback(
+    debounce((query) => {
+      getMovies({ query })
+    }, 300)
+  , [getMovies])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -17,7 +23,7 @@ function App() {
   const handleChange = (event) => {
     const newSearch = event.target.value
     setQuery(newSearch)
-    getMovies({ query: newSearch})
+    debounceGetMovies(newSearch)
   }
 
   const handleSort = () => {
@@ -38,7 +44,7 @@ function App() {
             style={{ border: '1px solid transparent', borderColor: error ? 'red' : 'transparent' }}
           />
           <button type='submit'>Buscar</button>
-          <input type='checkbox' onChange={handleSort} checked={sort}/>
+          <input type='checkbox' onChange={handleSort} checked={sort} />
         </form>
       </header>
       <p className="paraffo-aspelis" style={{ color: 'red' }}>{error}</p>
