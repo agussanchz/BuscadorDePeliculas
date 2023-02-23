@@ -32,7 +32,7 @@ function App() {
           <button type='submit'>Buscar</button>
         </form>
       </header>
-      <p className="title-aspelis" style={{ color: 'red' }}>{error}</p>
+      <p className="paraffo-aspelis" style={{ color: 'red' }}>{error}</p>
       <main className="results">
         {loading ? <p>Cargando ... </p> : <Movies movies={movies} />}
       </main>

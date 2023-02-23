@@ -52,13 +52,19 @@ button:focus-visible {
 .title-aspelis {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+.paraffo-aspelis {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .results {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .results-ul {
