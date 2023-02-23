@@ -5,7 +5,7 @@ export const searchMovies = async ({ query }) => {
   if (query === '') return null
 
   try {
-    const response = await fetch(` http://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`)
+    const response = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`)
     const json = await response.json()
 
     const movies = json.Search
@@ -20,3 +20,4 @@ export const searchMovies = async ({ query }) => {
     throw new Error('Error al buscar la pelicula')
   }
 }
+
