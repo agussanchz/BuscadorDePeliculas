@@ -17,7 +17,7 @@ function App() {
   const handleChange = (event) => {
     const newSearch = event.target.value
     setQuery(newSearch)
-    getMovies({ search: newSearch})
+    getMovies({ query: newSearch})
   }
 
   const handleSort = () => {
