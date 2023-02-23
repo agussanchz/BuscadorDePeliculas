@@ -19,9 +19,10 @@ function ListOfMovies({ movies }) {
 
 export default function Movies({ movies }) {
     const hasMovies = movies?.length > 0
+    const text = movies === undefined ? 'No se econtraron resultados para esta busqueda' : ''
     return (
         <>
-            {hasMovies ? <ListOfMovies movies={movies} /> : (<p>No se encontraron resultados para esta busqueda </p>)}
+            {hasMovies ? <ListOfMovies movies={movies} /> : (<p>{text}</p>)}
         </>
     )
 }

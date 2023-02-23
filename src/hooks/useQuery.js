@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react"
 export function useQuery() {
     const [query, setQuery] = useState('')
     const [error, setError] = useState(null)
+
     const firstInput = useRef(true)
 
     useEffect(() => {
@@ -17,11 +18,6 @@ export function useQuery() {
             return
         }
 
-        if (query.match(/^\d+$/)) {
-            setError('No se puede buscar una pelicula con numeros')
-            return
-        }
-        
         if (query.length < 3) {
             setError('La busqueda debe tener al menos 3 caracteres')
             return
