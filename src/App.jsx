@@ -8,7 +8,7 @@ import { useQuery } from "./hooks/useQuery"
 
 function App() {
 
-  
+
   const { query, setQuery, error } = useQuery()
   const { movies, getMovies } = useMovies({ query })
 
@@ -28,13 +28,13 @@ function App() {
       <h1 className='title-aspelis'>Buscador de peliculas</h1>
       <header>
         <form className="container-search" onSubmit={handleSubmit}>
-          <input 
-            name='input' 
+          <input
+            name='input'
             type='search'
-            value={query} 
-            onChange={handleChange} 
-            placeholder='Avatar, Matrix, Maze Runner..' 
-            style={{ border: '1px solid transparent', borderColor: error ? 'red' : 'transparent'}}
+            value={query}
+            onChange={handleChange}
+            placeholder='Avatar, Matrix, Maze Runner..'
+            style={{ border: '1px solid transparent', borderColor: error ? 'red' : 'transparent' }}
           />
           <button type='submit'>Buscar</button>
         </form>
