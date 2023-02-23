@@ -36,6 +36,7 @@ function App() {
       <header>
         <form className="container-search" onSubmit={handleSubmit}>
           <input
+            className='input'
             name='input'
             type='search'
             value={query}
