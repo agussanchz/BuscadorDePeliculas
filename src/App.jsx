@@ -5,7 +5,7 @@ import { useQuery } from "./hooks/useQuery"
 
 function App() {
   const { query, setQuery, error } = useQuery()
-  const { movies, getMovies } = useMovies({ query })
+  const { movies, getMovies, loading } = useMovies({ query })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -34,7 +34,7 @@ function App() {
       </header>
       <p className="title-aspelis" style={{ color: 'red' }}>{error}</p>
       <main className="results">
-        <Movies movies={movies} />
+        {loading ? <p>Cargando ... </p> : <Movies movies={movies} />}
       </main>
     </div>
   )
