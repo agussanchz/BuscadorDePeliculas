@@ -16,6 +16,7 @@ function ListOfMovies({ movies }) {
     )
 }
 
+
 export default function Movies({ movies }) {
     const hasMovies = movies?.length > 0
     return (

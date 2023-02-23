@@ -27,7 +27,6 @@ export function useQuery() {
             return
         }
 
-
         setError(null)
 
     }, [query])

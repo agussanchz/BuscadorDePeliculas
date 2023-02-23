@@ -1,14 +1,9 @@
-
 import Movies from "./components/Movies"
 import { useMovies } from "./hooks/useMovies"
 import { useQuery } from "./hooks/useQuery"
 
 
-
-
 function App() {
-
-
   const { query, setQuery, error } = useQuery()
   const { movies, getMovies } = useMovies({ query })
 
@@ -20,8 +15,6 @@ function App() {
   const handleChange = (event) => {
     setQuery(event.target.value)
   }
-
-
 
   return (
     <div className="app">
