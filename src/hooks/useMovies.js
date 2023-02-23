@@ -1,5 +1,5 @@
 import { searchMovies } from '../services/movies'
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 //custom hook
 export function useMovies({ query, sort }) {
@@ -9,7 +9,7 @@ export function useMovies({ query, sort }) {
   const previousSearch = useRef(query)
 
 
-  const getMovies = async () => {
+  const getMovies = useCallback(async ({ query }) => {
     if (query === previousSearch.current) return
 
     try {
@@ -22,7 +22,7 @@ export function useMovies({ query, sort }) {
     } finally {
       setLoading(false)
     }
-  }
+  },[])
 
   const sortedMovies = useMemo(() => {
     return sort
