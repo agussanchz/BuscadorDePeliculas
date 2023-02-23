@@ -1,23 +1,35 @@
 import { searchMovies } from '../services/movies'
-import { useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 //custom hook
-export function useMovies({ query }) {
+export function useMovies({ query, sort }) {
 
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(false)
+  const previousSearch = useRef(query)
+
 
   const getMovies = async () => {
+    if (query === previousSearch.current) return
+
     try {
       setLoading(true)
+      previousSearch.current = query
       const newMovies = await searchMovies({ query })
-      setMovies(newMovies)  
+      setMovies(newMovies)
     } catch (error) {
       throw new Error('Error al cargar las peliculas')
-    } finally{
+    } finally {
       setLoading(false)
     }
-    
   }
-  return { movies, getMovies, loading}
+
+  const sortedMovies = useMemo(() => {
+    return sort
+      ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+      : movies
+  }, [sort, movies])
+
+
+  return { movies: sortedMovies, getMovies, loading }
 }
